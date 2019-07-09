@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-export const getBooksQuery = gql`
+const getBooksQuery = gql`
     {
         books {
             name
@@ -9,7 +9,7 @@ export const getBooksQuery = gql`
     }
 `;
 
-export const getAuthorsQuery = gql`
+const getAuthorsQuery = gql`
     {
         authors {
             name
@@ -17,3 +17,14 @@ export const getAuthorsQuery = gql`
         }
     }
 `;
+
+const addBookMutation = gql`
+    mutation($name: String!, $genre: String!, $authorId: ID!) {
+        addBook(name: $name, genre: $genre, authorId: $authorId) {
+            name
+            id
+        }
+    }
+`;
+
+export { getBooksQuery, getAuthorsQuery, addBookMutation };
